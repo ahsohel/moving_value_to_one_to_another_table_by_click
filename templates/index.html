@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form method="POST" action="{% url 'save_info' %}">{% csrf_token %}
+class one <br>
+    Name <input name="name"><br>
+    Roll <input name="roll">
+<button type="submit">save</button>
+</form>
+
+<h3>
+
+class one
+
+</h3>
+
+<table style="width:100% border-style: dotted dashed solid double;  border-style: solid;">
+  <tr>
+    <th>Name</th>
+    <th>Roll</th>
+    <th>Move</th>
+
+  </tr>
+    {% if info_one_t %}
+    {% for i in info_one_t %}
+  <tr>
+    <td>{{i.name}}</td>
+    <td>{{i.roll}}</td>
+    <td><a href="{% url 'move_value' i.id %}" type="btn">Move</a></td>
+
+  </tr>
+    {% endfor %}
+    {% endif %}
+
+</table>
+
+
+after moving the data
+
+<table style="width:100% border-style: dotted dashed solid double; border-style: solid;">
+  <tr>
+    <th>Name</th>
+    <th>Roll</th>
+    <th>back to main database</th>
+
+  </tr>
+    {% if info_two_t %}
+    {% for i in info_two_t %}
+  <tr>
+    <td>{{i.name}}</td>
+    <td>{{i.roll}}</td>
+    <td><a href="{% url 'back_value' i.id %}" type="btn">back</a></td>
+
+  </tr>
+    {% endfor %}
+    {% endif %}
+
+</table>
+
+<br>
+<br>
+<br>
+
+<a href="{% url 'pdf_file' %}" type="btn">pdf</a>
+<br>
+<br>
+
+<a href="{% url 'csv_file' %}" type="btn">csv</a>
+<br>
+<br>
+
+<a href="{% url 'txt_file' %}" type="btn">Text</a>
+<br>
+<br>
+
+<a href="{% url 'json_def' %}" type="btn">json test</a>
+<br>
+<br>
+
+
+
+
+</body>
+</html>
